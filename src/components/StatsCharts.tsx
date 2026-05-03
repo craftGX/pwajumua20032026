@@ -23,6 +23,7 @@ interface SalawatEntry {
   date: string;
 }
 
+// À adapter à ta vraie source de données
 async function getAllSalawat(): Promise<SalawatEntry[]> {
   return [];
 }
@@ -117,7 +118,7 @@ export default function StatsCharts() {
   };
 
   const btnBase =
-    "inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ease-out active:scale-95 disabled:opacity-50 disabled:pointer-events-none disabled:transform-none disabled:shadow-none whitespace-nowrap";
+    "inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ease-out active:scale-95 disabled:opacity-50 disabled:pointer-events-none disabled:transform-none disabled:shadow-none";
 
   const btnPrimary =
     "bg-blue-600 text-white shadow-sm hover:bg-blue-500 hover:scale-[1.03] hover:shadow-md";
@@ -127,6 +128,7 @@ export default function StatsCharts() {
 
   return (
     <div className="grid grid-cols-1 gap-6 p-4 sm:p-6 lg:p-8">
+      {/* Carte 1 : Récap Mois */}
       <motion.div
         variants={cardAnim}
         initial="hidden"
@@ -134,9 +136,9 @@ export default function StatsCharts() {
         transition={{ duration: 0.35 }}
         className="overflow-hidden rounded-3xl border border-blue-500/20 bg-white/80 p-4 shadow-sm backdrop-blur-sm sm:p-6"
       >
-        <div className="mb-4 flex items-center justify-between gap-3">
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="text-xl font-bold text-slate-800 sm:text-2xl">Récap Mois</h2>
-          <button className={`${btnBase} ${btnPrimary}`}>Ajouter</button>
+          <button className={`${btnBase} ${btnPrimary} w-full sm:w-auto`}>Ajouter</button>
         </div>
 
         {loading ? (
@@ -151,12 +153,13 @@ export default function StatsCharts() {
           </div>
         )}
 
-        <div className="mt-4 flex flex-wrap gap-3">
-          <button className={`${btnBase} ${btnPrimary}`}>Modifier</button>
-          <button className={`${btnBase} ${btnDanger}`}>Supprimer</button>
+        <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          <button className={`${btnBase} ${btnPrimary} w-full sm:w-auto`}>Modifier</button>
+          <button className={`${btnBase} ${btnDanger} w-full sm:w-auto`}>Supprimer</button>
         </div>
       </motion.div>
 
+      {/* Carte 2 : Comparatif 5 Vendredis */}
       <motion.div
         variants={cardAnim}
         initial="hidden"
@@ -164,9 +167,9 @@ export default function StatsCharts() {
         transition={{ duration: 0.35, delay: 0.08 }}
         className="overflow-hidden rounded-3xl border border-blue-500/20 bg-white/80 p-4 shadow-sm backdrop-blur-sm sm:p-6"
       >
-        <div className="mb-4 flex items-center justify-between gap-3">
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="text-xl font-bold text-slate-800 sm:text-2xl">Comparatif 5 Vendredis</h2>
-          <button className={`${btnBase} ${btnPrimary}`}>Filtrer</button>
+          <button className={`${btnBase} ${btnPrimary} w-full sm:w-auto`}>Filtrer</button>
         </div>
 
         {loading ? (
@@ -181,9 +184,9 @@ export default function StatsCharts() {
           </div>
         )}
 
-        <div className="mt-4 flex flex-wrap gap-3">
-          <button className={`${btnBase} ${btnPrimary}`}>Exporter</button>
-          <button className={`${btnBase} ${btnDanger}`}>Supprimer</button>
+        <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          <button className={`${btnBase} ${btnPrimary} w-full sm:w-auto`}>Exporter</button>
+          <button className={`${btnBase} ${btnDanger} w-full sm:w-auto`}>Supprimer</button>
         </div>
       </motion.div>
     </div>
